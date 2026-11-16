@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "cluster": "demo",
+  "nodes": {
+    "node-a": {
+      "schedulable": true,
+      "snapshot": "records-a.json"
+    },
+    "node-b": {
+      "schedulable": true,
+      "snapshot": "records-b.json"
+    },
+    "node-c": {
+      "schedulable": true,
+      "snapshot": "node-c.json"
+    },
+    "node-missing": {
+      "schedulable": true,
+      "snapshot": "../snapshots/empty.json"
+    },
+    "node-unknown": {
+      "schedulable": true
+    }
+  }
+}

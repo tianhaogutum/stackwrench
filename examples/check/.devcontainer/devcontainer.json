@@ -1,0 +1,13 @@
+{
+  // Synthetic Dev Container for the demo app.
+  "name": "shop-web",
+  "build": {
+    "context": "..",
+    "dockerfile": "Dockerfile"
+  },
+  "workspaceMount": "type=bind,source=${localWorkspaceFolder},target=/workspace",
+  "workspaceFolder": "/workspace",
+  "mounts": [
+    "type=bind,source=${localWorkspaceFolder}/.npm-cache,target=/home/node/.npm"
+  ]
+}

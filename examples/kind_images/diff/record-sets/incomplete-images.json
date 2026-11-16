@@ -1,0 +1,29 @@
+{
+  "images": [
+    {
+      "id": "opaque-not-content",
+      "repoTags": [
+        "demo:v1"
+      ],
+      "repoDigests": [
+        "demo@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ]
+    },
+    {
+      "id": "opaque-not-content",
+      "repoTags": [
+        "demo:v1"
+      ],
+      "repoDigests": [
+        "demo@sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ]
+    },
+    {
+      "id": "opaque-not-content",
+      "repoTags": [
+        "demo:v1"
+      ],
+      "repoDigests": []
+    }
+  ]
+}

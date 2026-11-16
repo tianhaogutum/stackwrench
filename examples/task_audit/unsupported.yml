@@ -1,0 +1,10 @@
+version: '3'
+includes:
+  shared: ./not-loaded.yml
+vars:
+  GIT_REV:
+    sh: echo never-executed
+tasks:
+  inspect:
+    cmds:
+      - 'echo {{.GIT_REV | default "unknown"}}'

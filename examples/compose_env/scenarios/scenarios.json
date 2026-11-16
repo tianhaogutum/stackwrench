@@ -1,0 +1,4 @@
+{
+  "development": {"env_files": ["dev.env"]},
+  "ci": {"env_files": ["ci.env"], "shell_env": "ci.json"}
+}

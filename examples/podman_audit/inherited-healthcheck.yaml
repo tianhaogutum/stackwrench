@@ -1,0 +1,9 @@
+# Synthetic declaration only; image healthchecks remain unknown.
+services:
+  api:
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    healthcheck:
+      interval: 30s

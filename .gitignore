@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+/build/
+/dist/
+.eggs/
+
+# Environments and tool caches
+.venv/
+.venv*/
+venv/
+.tmp/
+.cache/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Lock files are not committed for this library; CI resolves fresh dependencies.
+uv.lock
+
+# Local tool outputs (SARIF reports)
+*.sarif
+
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store

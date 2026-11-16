@@ -1,0 +1,6 @@
+{
+  "z_baseline": {"env_files": ["baseline.env"]},
+  "a_candidate": {"env_files": ["candidate.env"]},
+  "m_identical": {"env_files": ["baseline.env"]},
+  "unselected_missing": {"env_files": ["missing.env"]}
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "scenarios": [
+    {"id": "declare-v1", "changes": [{"path": "src/app.js", "kind": "content", "revisionId": "source-v1"}]},
+    {"id": "declare-v2", "changes": [{"path": "src/app.js", "kind": "content", "revisionId": "source-v2"}]},
+    {"id": "revert-v1", "changes": [{"path": "src/app.js", "kind": "content", "revisionId": "source-v1"}]},
+    {"id": "delete-source", "changes": [{"path": "src/app.js", "kind": "delete"}]},
+    {"id": "readd-v1", "changes": [{"path": "src/app.js", "kind": "add", "revisionId": "source-v1"}]}
+  ]
+}

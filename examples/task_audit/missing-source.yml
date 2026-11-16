@@ -1,0 +1,5 @@
+version: '3'
+tasks:
+  missing:
+    sources: [does-not-exist.txt]
+    cmds: ['cat does-not-exist.txt']

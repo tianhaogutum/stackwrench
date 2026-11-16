@@ -1,0 +1,5 @@
+{
+  "image": "synthetic-image:example",
+  "workspaceMount": "type=bind,source=${localWorkspaceFolder},target=/work/${localWorkspaceFolderBasename}",
+  "workspaceFolder": "/work/${localWorkspaceFolderBasename}/src"
+}

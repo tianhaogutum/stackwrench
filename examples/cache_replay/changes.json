@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "scenarios": [
+    {"id": "source-edit", "changes": [{"path": "src/app.js", "kind": "content"}]},
+    {"id": "manifest-edit", "changes": [{"path": "package.json", "kind": "content"}]},
+    {"id": "new-source", "changes": [{"path": "src/new.js", "kind": "add"}]},
+    {"id": "deleted-doc", "changes": [{"path": "docs/note.txt", "kind": "delete"}]},
+    {"id": "mtime-only", "changes": [{"path": "package-lock.json", "kind": "mtime"}]}
+  ]
+}

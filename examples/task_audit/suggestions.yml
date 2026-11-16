@@ -1,0 +1,10 @@
+# Local synthetic inputs: commands are only scanned, never executed.
+version: '3'
+tasks:
+  review:
+    cmds:
+      - 'cat base.txt; printf "%s\n" "$MODE"'
+      - "echo '$LITERAL' \\$ESCAPED"
+  dynamic:
+    cmds:
+      - 'cat "$FILE"'

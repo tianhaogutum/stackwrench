@@ -1,0 +1,3 @@
+services:
+  web:
+    image: '${IMAGE:-example.invalid/web:1}'

@@ -1,0 +1,12 @@
+{
+  // Synthetic object mount: source and target have distinct value tokens.
+  "image": "synthetic:example",
+  "workspaceFolder": "/work",
+  "mounts": [
+    {
+      "type": "bind",
+      "source": ".",
+      "target": "/work",
+    },
+  ],
+}

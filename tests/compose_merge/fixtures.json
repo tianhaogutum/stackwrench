@@ -1,0 +1,884 @@
+[
+  {
+    "name": "map",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    labels: {keep: base, change: old}\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    labels: {change: new, added: yes}\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "labels": {
+            "keep": "base",
+            "change": "new",
+            "added": "yes"
+          }
+        }
+      }
+    },
+    "path": "/services/web/labels/change",
+    "action": "replace",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "append",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    dns: [1.1.1.1]\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    dns: [8.8.8.8]\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "dns": [
+            "1.1.1.1",
+            "8.8.8.8"
+          ]
+        }
+      }
+    },
+    "path": "/services/web/dns",
+    "action": "append",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "command",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    command: [echo, old]\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    command: [echo, new]\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "command": [
+            "echo",
+            "new"
+          ]
+        }
+      }
+    },
+    "path": "/services/web/command",
+    "action": "replace",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "entrypoint",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    entrypoint: [echo, old]\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    entrypoint: [echo, new]\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "entrypoint": [
+            "echo",
+            "new"
+          ]
+        }
+      }
+    },
+    "path": "/services/web/entrypoint",
+    "action": "replace",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "healthcheck",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    healthcheck: {test: [CMD, echo, old], interval: 30s}\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    healthcheck: {test: [CMD, echo, new]}\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "healthcheck": {
+            "test": [
+              "CMD",
+              "echo",
+              "new"
+            ],
+            "interval": "30s"
+          }
+        }
+      }
+    },
+    "path": "/services/web/healthcheck/test",
+    "action": "replace",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "command-null",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    command: [echo, old]\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    command: null\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "command": null
+        }
+      }
+    },
+    "path": "/services/web/command",
+    "action": "replace",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "command-string",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    command: [echo, old]\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    command: echo new\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "command": "echo new"
+        }
+      }
+    },
+    "path": "/services/web/command",
+    "action": "replace",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "volume",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    volumes: [\"cache:/cache:ro\"]\nsecrets:\n  token: {external: true}\n  newer: {external: true}\nconfigs:\n  settings: {external: true}\n  newer: {external: true}\nvolumes:\n  cache: {}\n  fresh: {}\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    volumes: [{type: volume, source: fresh, target: /cache, read_only: false}]\nsecrets:\n  token: {external: true}\n  newer: {external: true}\nconfigs:\n  settings: {external: true}\n  newer: {external: true}\nvolumes:\n  cache: {}\n  fresh: {}\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "volumes": [
+            {
+              "type": "volume",
+              "source": "fresh",
+              "target": "/cache",
+              "read_only": false
+            }
+          ]
+        }
+      },
+      "secrets": {
+        "token": {
+          "external": true
+        },
+        "newer": {
+          "external": true
+        }
+      },
+      "configs": {
+        "settings": {
+          "external": true
+        },
+        "newer": {
+          "external": true
+        }
+      },
+      "volumes": {
+        "cache": {},
+        "fresh": {}
+      }
+    },
+    "path": "/services/web/volumes/0/source",
+    "action": "replace",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "secrets",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    secrets: [token]\nsecrets:\n  token: {external: true}\n  newer: {external: true}\nconfigs:\n  settings: {external: true}\n  newer: {external: true}\nvolumes:\n  cache: {}\n  fresh: {}\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    secrets: [{source: newer, target: /run/secrets/token}]\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "secrets": [
+            {
+              "source": "newer",
+              "target": "/run/secrets/token"
+            }
+          ]
+        }
+      },
+      "secrets": {
+        "token": {
+          "external": true
+        },
+        "newer": {
+          "external": true
+        }
+      },
+      "configs": {
+        "settings": {
+          "external": true
+        },
+        "newer": {
+          "external": true
+        }
+      },
+      "volumes": {
+        "cache": {},
+        "fresh": {}
+      }
+    },
+    "path": "/services/web/secrets/0/source",
+    "action": "replace",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "configs",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    configs: [settings]\nsecrets:\n  token: {external: true}\n  newer: {external: true}\nconfigs:\n  settings: {external: true}\n  newer: {external: true}\nvolumes:\n  cache: {}\n  fresh: {}\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    configs: [{source: newer, target: /settings}]\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "configs": [
+            {
+              "source": "newer",
+              "target": "/settings"
+            }
+          ]
+        }
+      },
+      "secrets": {
+        "token": {
+          "external": true
+        },
+        "newer": {
+          "external": true
+        }
+      },
+      "configs": {
+        "settings": {
+          "external": true
+        },
+        "newer": {
+          "external": true
+        }
+      },
+      "volumes": {
+        "cache": {},
+        "fresh": {}
+      }
+    },
+    "path": "/services/web/configs/0/source",
+    "action": "replace",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "port-shared",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    ports: [\"8080:80\"]\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    ports: [{target: 80, published: \"8080\", name: public}]\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "ports": [
+            {
+              "target": 80,
+              "published": "8080",
+              "protocol": "tcp",
+              "mode": "ingress",
+              "name": "public"
+            }
+          ]
+        }
+      }
+    },
+    "path": "/services/web/ports/0/name",
+    "action": "add",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "port-ip",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    ports: [\"8080:80\"]\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    ports: [\"127.0.0.1:8080:80\"]\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "ports": [
+            {
+              "target": 80,
+              "published": "8080",
+              "protocol": "tcp",
+              "mode": "ingress"
+            },
+            {
+              "target": 80,
+              "published": "8080",
+              "protocol": "tcp",
+              "mode": "ingress",
+              "host_ip": "127.0.0.1"
+            }
+          ]
+        }
+      }
+    },
+    "path": "/services/web/ports/1",
+    "action": "add",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "port-target",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    ports: [\"8080:80\"]\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    ports: [\"8080:81\"]\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "ports": [
+            {
+              "target": 80,
+              "published": "8080",
+              "protocol": "tcp",
+              "mode": "ingress"
+            },
+            {
+              "target": 81,
+              "published": "8080",
+              "protocol": "tcp",
+              "mode": "ingress"
+            }
+          ]
+        }
+      }
+    },
+    "path": "/services/web/ports/1",
+    "action": "add",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "port-published",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    ports: [\"8080:80\"]\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    ports: [\"8081:80\"]\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "ports": [
+            {
+              "target": 80,
+              "published": "8080",
+              "protocol": "tcp",
+              "mode": "ingress"
+            },
+            {
+              "target": 80,
+              "published": "8081",
+              "protocol": "tcp",
+              "mode": "ingress"
+            }
+          ]
+        }
+      }
+    },
+    "path": "/services/web/ports/1",
+    "action": "add",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "port-protocol",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    ports: [\"8080:80\"]\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    ports: [\"8080:80/udp\"]\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "ports": [
+            {
+              "target": 80,
+              "published": "8080",
+              "protocol": "tcp",
+              "mode": "ingress"
+            },
+            {
+              "target": 80,
+              "published": "8080",
+              "protocol": "udp",
+              "mode": "ingress"
+            }
+          ]
+        }
+      }
+    },
+    "path": "/services/web/ports/1",
+    "action": "add",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "port-default-ip",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    ports: [\"8080:80\"]\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    ports: [\"0.0.0.0:8080:80\"]\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "ports": [
+            {
+              "target": 80,
+              "published": "8080",
+              "protocol": "tcp",
+              "mode": "ingress",
+              "host_ip": "0.0.0.0"
+            }
+          ]
+        }
+      }
+    },
+    "path": "/services/web/ports/0/host_ip",
+    "action": "add",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "port-unquoted",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    ports: [1:20]\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    ports: [\"1:20\"]\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "ports": [
+            {
+              "target": 20,
+              "published": "1",
+              "protocol": "tcp",
+              "mode": "ingress"
+            }
+          ]
+        }
+      }
+    },
+    "path": "/services/web/ports",
+    "action": "merge",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "reset-list",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    dns: [1.1.1.1]\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    dns: !reset []\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1"
+        }
+      }
+    },
+    "path": "/services/web/dns",
+    "action": "reset",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "reset-scalar",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    environment: {REMOVE: old, KEEP: base}\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    environment: {REMOVE: !reset null}\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "environment": {
+            "KEEP": "base"
+          }
+        }
+      }
+    },
+    "path": "/services/web/environment/REMOVE",
+    "action": "reset",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "reset-map",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    labels: {old: value}\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    labels: !reset {}\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1"
+        }
+      }
+    },
+    "path": "/services/web/labels",
+    "action": "reset",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "override-list",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    ports: [\"8080:80\"]\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    ports: !override [\"9443:443\"]\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "ports": [
+            {
+              "target": 443,
+              "published": "9443",
+              "protocol": "tcp",
+              "mode": "ingress"
+            }
+          ]
+        }
+      }
+    },
+    "path": "/services/web/ports",
+    "action": "override",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "override-map",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    environment: {old: value, keep: base}\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    environment: !override {new: explicit}\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "environment": {
+            "new": "explicit"
+          }
+        }
+      }
+    },
+    "path": "/services/web/environment",
+    "action": "override",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "override-scalar",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/old:1\n",
+      "services:\n  web:\n    image: !override example.invalid/new:1\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/new:1"
+        }
+      }
+    },
+    "path": "/services/web/image",
+    "action": "override",
+    "winner": 1,
+    "winnerLine": 3
+  },
+  {
+    "name": "bind",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    volumes: [\"./data:/data:ro\"]\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    volumes: [{type: bind, source: ./new, target: /data, read_only: false, bind: {create_host_path: true}}]\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "volumes": [
+            {
+              "type": "bind",
+              "source": "./new",
+              "target": "/data",
+              "read_only": false,
+              "bind": {
+                "create_host_path": true
+              }
+            }
+          ]
+        }
+      }
+    },
+    "path": "/services/web/volumes/0/source",
+    "action": "replace",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "retained-source",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    labels: {keep: base, change: old}\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    labels: {change: new}\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "labels": {
+            "keep": "base",
+            "change": "new"
+          }
+        }
+      }
+    },
+    "path": "/services/web/labels/keep",
+    "action": "add",
+    "winner": 0,
+    "winnerLine": 4
+  },
+  {
+    "name": "extension-pointer",
+    "files": [
+      "x-data: {\"a/b~c\": [one]}\n",
+      "x-data: {\"a/b~c\": [two]}\n"
+    ],
+    "expected": {
+      "x-data": {
+        "a/b~c": [
+          "one",
+          "two"
+        ]
+      }
+    },
+    "path": "/x-data/a~1b~0c",
+    "action": "append",
+    "winner": 1,
+    "winnerLine": 1
+  },
+  {
+    "name": "healthcheck-string",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    healthcheck: {test: [CMD, echo, old]}\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    healthcheck: {test: echo new}\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "healthcheck": {
+            "test": "echo new"
+          }
+        }
+      }
+    },
+    "path": "/services/web/healthcheck/test",
+    "action": "replace",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "entrypoint-empty",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    entrypoint: [/entry]\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    entrypoint: []\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "entrypoint": []
+        }
+      }
+    },
+    "path": "/services/web/entrypoint",
+    "action": "replace",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "ipv6-long",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    ports: [{target: 80, published: \"8080\", host_ip: \"::1\"}]\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    ports: [{target: 80, published: \"8080\", host_ip: \"::1\", name: ipv6}]\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "ports": [
+            {
+              "target": 80,
+              "published": "8080",
+              "protocol": "tcp",
+              "mode": "ingress",
+              "host_ip": "::1",
+              "name": "ipv6"
+            }
+          ]
+        }
+      }
+    },
+    "path": "/services/web/ports/0/name",
+    "action": "add",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "secret-options",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    secrets: [{source: token, target: /token, uid: \"1000\", gid: \"1000\", mode: 0444}]\nsecrets:\n  token: {external: true}\n  newer: {external: true}\nconfigs:\n  settings: {external: true}\n  newer: {external: true}\nvolumes:\n  cache: {}\n  fresh: {}\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    secrets: [{source: newer, target: /token, uid: \"1001\", gid: \"1001\", mode: 0400}]\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "secrets": [
+            {
+              "source": "newer",
+              "target": "/token",
+              "uid": "1001",
+              "gid": "1001",
+              "mode": 256
+            }
+          ]
+        }
+      },
+      "secrets": {
+        "token": {
+          "external": true
+        },
+        "newer": {
+          "external": true
+        }
+      },
+      "configs": {
+        "settings": {
+          "external": true
+        },
+        "newer": {
+          "external": true
+        }
+      },
+      "volumes": {
+        "cache": {},
+        "fresh": {}
+      }
+    },
+    "path": "/services/web/secrets/0/mode",
+    "action": "replace",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "volumes-append",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    volumes: [\"cache:/cache\"]\nsecrets:\n  token: {external: true}\n  newer: {external: true}\nconfigs:\n  settings: {external: true}\n  newer: {external: true}\nvolumes:\n  cache: {}\n  fresh: {}\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    volumes: [\"fresh:/fresh\"]\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "volumes": [
+            {
+              "type": "volume",
+              "source": "cache",
+              "target": "/cache",
+              "read_only": false
+            },
+            {
+              "type": "volume",
+              "source": "fresh",
+              "target": "/fresh",
+              "read_only": false
+            }
+          ]
+        }
+      },
+      "secrets": {
+        "token": {
+          "external": true
+        },
+        "newer": {
+          "external": true
+        }
+      },
+      "configs": {
+        "settings": {
+          "external": true
+        },
+        "newer": {
+          "external": true
+        }
+      },
+      "volumes": {
+        "cache": {},
+        "fresh": {}
+      }
+    },
+    "path": "/services/web/volumes/1",
+    "action": "add",
+    "winner": 1,
+    "winnerLine": 4
+  },
+  {
+    "name": "resource-null-base",
+    "files": [
+      "services:\n  web:\n    image: example.invalid/web:1\n    command: [echo, base]\nvolumes: {cache: null}\n",
+      "services:\n  web:\n    image: example.invalid/web:1\n    command: [echo, later]\nvolumes: {cache: {driver: local}}\n"
+    ],
+    "expected": {
+      "services": {
+        "web": {
+          "image": "example.invalid/web:1",
+          "command": [
+            "echo",
+            "later"
+          ]
+        }
+      },
+      "volumes": {
+        "cache": {
+          "driver": "local"
+        }
+      }
+    },
+    "path": "/volumes/cache",
+    "action": "replace",
+    "winner": 1,
+    "winnerLine": 5
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "name": "synthetic-reviewed-snapshot",
+  "services": {
+    "web": {
+      "build": {
+        "context": ".",
+        "dockerfile": "build/Dockerfile"
+      },
+      "volumes": [
+        { "type": "bind", "source": "./src", "target": "/work" },
+        { "type": "volume", "source": "cache", "target": "/deps" }
+      ]
+    },
+    "db": { "image": "synthetic-db:example" }
+  },
+  "volumes": { "cache": {} }
+}

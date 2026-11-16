@@ -1,0 +1,20 @@
+{
+  "services": {
+    "db": {},
+    "api": {
+      "depends_on": {
+        "db": {
+          "condition": "service_healthy",
+          "required": false,
+          "restart": true
+        }
+      }
+    },
+    "web": {
+      "depends_on": [
+        "api"
+      ]
+    },
+    "isolated": {}
+  }
+}

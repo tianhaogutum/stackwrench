@@ -1,0 +1,6 @@
+services:
+  web:
+    ports: !override ['9443:443']
+    dns: !reset []
+    environment: !override
+      ONLY: explicit

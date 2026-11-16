@@ -1,0 +1,7 @@
+# Synthetic Compose long syntax: source and target have distinct value tokens.
+services:
+  web:
+    volumes:
+      - type: "bind"
+        source: "."
+        target: "/work"

@@ -1,0 +1,120 @@
+[build-system]
+requires = ["hatchling>=1.27", "hatch-fancy-pypi-readme>=24.1"]
+build-backend = "hatchling.build"
+
+[project]
+name = "stackwrench"
+version = "0.1.0"
+description = "Find why your local dev stack breaks: Compose env and merge tracing, Podman compatibility, Dev Container wiring, mise pin drift, Docker context and cache budgets, just/Taskfile checks — one offline CLI."
+# README.md with repository-relative links rewritten for PyPI (see tool.hatch.metadata.hooks below).
+dynamic = ["readme"]
+requires-python = ">=3.12"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY.md"]
+authors = [{ name = "tianhaogutum" }]
+keywords = [
+    "docker", "docker-compose", "compose", "podman", "devcontainer", "dev-containers",
+    "mise", "asdf", "version-pinning", "dockerfile", "build-cache", "docker-context",
+    "dockerignore", "kind", "kubernetes", "container-images", "just", "justfile",
+    "taskfile", "go-task", "sarif", "local-development", "devtools", "cli",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: System :: Software Distribution",
+    "Topic :: Utilities",
+]
+# Every command reads YAML (Compose files, Taskfiles, Kubernetes manifests, Dev Container
+# Compose wiring), so PyYAML is the one base dependency; everything else is standard library.
+dependencies = ["PyYAML>=6.0"]
+
+[project.optional-dependencies]
+# Everything the test suite imports: pytest and SARIF schema validation for devcontainer.
+test = [
+    "pytest>=8.4",
+    "jsonschema>=4.23",
+]
+
+[project.urls]
+Homepage = "https://github.com/tianhaogutum/stackwrench"
+Repository = "https://github.com/tianhaogutum/stackwrench"
+Issues = "https://github.com/tianhaogutum/stackwrench/issues"
+Documentation = "https://github.com/tianhaogutum/stackwrench/tree/main/docs"
+
+[project.scripts]
+stackwrench = "stackwrench.cli:main"
+
+[tool.hatch.metadata.hooks.fancy-pypi-readme]
+content-type = "text/markdown"
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+path = "README.md"
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
+# <img src>, <source srcset>: raw file URLs so the images render
+pattern = '(src|srcset)="(?!https?://)([^"]+)"'
+replacement = '\1="https://raw.githubusercontent.com/tianhaogutum/stackwrench/main/\2"'
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
+pattern = 'href="(?!https?://|#|mailto:)([^"]+)"'
+replacement = 'href="https://github.com/tianhaogutum/stackwrench/blob/main/\1"'
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
+# Markdown images, then Markdown links to files and directories
+pattern = '!\[([^\]]*)\]\((?!https?://)([^)\s]+)\)'
+replacement = '![\1](https://raw.githubusercontent.com/tianhaogutum/stackwrench/main/\2)'
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
+pattern = '\]\((?!https?://|#|mailto:)([^)\s]+)\)'
+replacement = '](https://github.com/tianhaogutum/stackwrench/blob/main/\1)'
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
+# In-page anchors: PyPI does not generate heading ids
+pattern = '\]\(#([^)\s]+)\)'
+replacement = '](https://github.com/tianhaogutum/stackwrench#\1)'
+
+[tool.hatch.build.targets.wheel]
+# Hatch ships every non-ignored file under src/stackwrench/, including package data such as
+# podman_audit/catalog.json (the Podman compatibility catalog read by `stackwrench podman-audit`).
+packages = ["src/stackwrench"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+    "/tests",
+    "/docs",
+    "/examples",
+    "/licenses",
+    "/README.md",
+    "/LICENSE",
+    "/THIRD_PARTY.md",
+    "/pyproject.toml",
+]
+exclude = ["__pycache__", "*.pyc", ".cache"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["-ra"]
+
+[tool.ruff]
+target-version = "py312"
+
+[tool.ruff.lint]
+# Correctness-focused set; the merged tools keep their original compact style.
+select = ["E4", "E7", "E9", "F"]
+
+[tool.ruff.lint.per-file-ignores]
+# Test modules re-export fixtures and helpers across sibling modules and keep a compact style.
+"tests/**" = ["F401", "F811", "F841", "E402", "E701", "E702", "E731"]
+"examples/**" = ["E402", "E701", "E702", "E731"]

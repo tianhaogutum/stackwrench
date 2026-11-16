@@ -1,0 +1,28 @@
+# Synthetic Taskfile for the demo app; nothing here is run.
+version: '3'
+
+vars:
+  VERSION: '1.4.0'
+
+tasks:
+  build:
+    desc: Bundle the web app
+    sources:
+      - src/**/*.js
+      - package.json
+    generates:
+      - dist/app.js
+    cmds:
+      - 'npx esbuild src/server.js --bundle --define:VERSION={{.VERSION}} --outfile=dist/app.js'
+
+  test:
+    sources:
+      - test/**/*.js
+    cmds:
+      - npm test
+
+  release-notes:
+    generates:
+      - dist/CHANGELOG.txt
+    cmds:
+      - 'git log --oneline > dist/CHANGELOG.txt'

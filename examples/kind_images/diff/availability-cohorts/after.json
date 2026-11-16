@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "cluster": "evidence-demo",
+  "nodes": {
+    "complete-pair": {
+      "schedulable": true,
+      "snapshot": "tags.json"
+    },
+    "incomplete-pair": {
+      "schedulable": true,
+      "snapshot": "../record-sets/incomplete-images.json"
+    },
+    "absent-both": {
+      "schedulable": true,
+      "snapshot": "../empty.json"
+    },
+    "present-missing-a": {
+      "schedulable": true
+    },
+    "absent-missing-a": {
+      "schedulable": true
+    },
+    "unknown-a": {
+      "schedulable": true
+    },
+    "missing-present-a": {
+      "schedulable": true,
+      "snapshot": "tags.json"
+    },
+    "added-present-a": {
+      "schedulable": true,
+      "snapshot": "tags.json"
+    },
+    "added-absent-a": {
+      "schedulable": true,
+      "snapshot": "../empty.json"
+    },
+    "added-missing-a": {
+      "schedulable": true
+    },
+    "present-missing-b": {
+      "schedulable": true
+    },
+    "absent-missing-b": {
+      "schedulable": false
+    },
+    "unknown-b": {
+      "schedulable": false
+    },
+    "missing-present-b": {
+      "schedulable": false,
+      "snapshot": "aliases.json"
+    },
+    "added-present-b": {
+      "schedulable": false,
+      "snapshot": "aliases.json"
+    },
+    "added-absent-b": {
+      "schedulable": false,
+      "snapshot": "../empty.json"
+    },
+    "added-missing-b": {
+      "schedulable": false
+    },
+    "tag-added": {
+      "schedulable": true,
+      "snapshot": "tags.json"
+    },
+    "tag-removed": {
+      "schedulable": true,
+      "snapshot": "../empty.json"
+    }
+  }
+}

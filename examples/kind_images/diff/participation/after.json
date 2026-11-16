@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "cluster": "evidence-demo",
+  "nodes": {
+    "a": {
+      "schedulable": true,
+      "snapshot": "../../evidence/records-b.json"
+    },
+    "b": {
+      "schedulable": true,
+      "snapshot": "../../evidence/records-b.json"
+    },
+    "c": {
+      "schedulable": true,
+      "snapshot": "../../evidence/cohort-d.json"
+    },
+    "d": {
+      "schedulable": true,
+      "snapshot": "../../evidence/cohort-d.json"
+    },
+    "excluded": {
+      "schedulable": false,
+      "snapshot": "../../evidence/records-b.json",
+      "capturedAt": "2026-11-11T12:00:00Z",
+      "source": "synthetic excluded after"
+    },
+    "entering": {
+      "schedulable": true,
+      "snapshot": "../../evidence/records-b.json"
+    },
+    "leaving": {
+      "schedulable": false,
+      "snapshot": "../../evidence/records-b.json"
+    },
+    "partial-before": {
+      "schedulable": true,
+      "snapshot": "../../evidence/records-b.json"
+    },
+    "partial-after": {
+      "schedulable": true,
+      "snapshot": "../record-sets/incomplete-images.json"
+    },
+    "missing-before": {
+      "schedulable": true,
+      "snapshot": "../../evidence/records-b.json"
+    },
+    "missing-after": {
+      "schedulable": true
+    },
+    "missing-both": {
+      "schedulable": true
+    },
+    "tag-added": {
+      "schedulable": true,
+      "snapshot": "../../evidence/records-b.json"
+    },
+    "tag-removed": {
+      "schedulable": true,
+      "snapshot": "../empty.json"
+    },
+    "added": {
+      "schedulable": true,
+      "snapshot": "../../evidence/records-b.json"
+    },
+    "absent-both": {
+      "schedulable": true,
+      "snapshot": "../empty.json"
+    },
+    "unknown-absent-before": {
+      "schedulable": true,
+      "snapshot": "../empty.json"
+    },
+    "unknown-absent-after": {
+      "schedulable": true
+    },
+    "added-missing": {
+      "schedulable": false
+    },
+    "added-observed": {
+      "schedulable": false,
+      "snapshot": "observed-only.json"
+    }
+  }
+}

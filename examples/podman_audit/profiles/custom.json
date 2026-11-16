@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "kind": "custom",
+  "provider": "podman-compose",
+  "version": "1.6.1",
+  "rules": {
+    "PC1500": "supported"
+  }
+}

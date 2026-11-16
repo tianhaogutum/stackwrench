@@ -1,0 +1,21 @@
+services:
+  both:
+    healthcheck:
+      test: [NONE]
+      start_interval: 1s
+      disable: true
+  disabled:
+    healthcheck:
+      start_interval: 1s
+      disable: true
+      test: [CMD-SHELL, SECRET_DO_NOT_ECHO]
+  none:
+    healthcheck:
+      start_interval: 1s
+      disable: false
+      test: [NONE]
+  active:
+    healthcheck:
+      start_interval: 1s
+      disable: false
+      test: [CMD, SECRET_DO_NOT_ECHO]

@@ -1,0 +1,5 @@
+services:
+  demo:
+    env_file: '${FILE:-selected.env}'
+    environment:
+      OVERRIDDEN: synthetic-equal

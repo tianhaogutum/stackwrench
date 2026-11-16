@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "kind": "builtin",
+  "provider": "podman-compose",
+  "version": "1.6.1"
+}

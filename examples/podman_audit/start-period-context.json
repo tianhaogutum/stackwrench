@@ -1,0 +1,77 @@
+{
+  "services": {
+    "both": {
+      "healthcheck": {
+        "start_period": "0",
+        "test": [
+          "NONE"
+        ],
+        "start_interval": "1s",
+        "disable": true
+      }
+    },
+    "disabled": {
+      "healthcheck": {
+        "start_period": "3s",
+        "start_interval": "1s",
+        "disable": true,
+        "test": [
+          "CMD-SHELL",
+          "SECRET_DO_NOT_ECHO"
+        ]
+      }
+    },
+    "none": {
+      "healthcheck": {
+        "start_interval": "1s",
+        "disable": false,
+        "test": [
+          "NONE"
+        ],
+        "start_period": "0s"
+      }
+    },
+    "active": {
+      "healthcheck": {
+        "start_period": "5s",
+        "start_interval": "1s",
+        "disable": false,
+        "test": [
+          "CMD",
+          "SECRET_DO_NOT_ECHO"
+        ]
+      }
+    },
+    "omitted": {
+      "healthcheck": {
+        "start_interval": "1s",
+        "test": [
+          "CMD",
+          "SECRET_DO_NOT_ECHO"
+        ]
+      }
+    },
+    "omitted_disabled": {
+      "healthcheck": {
+        "test": [
+          "NONE"
+        ],
+        "start_interval": "1s",
+        "disable": true
+      }
+    },
+    "period_only": {
+      "healthcheck": {
+        "start_period": "0"
+      }
+    },
+    "consumer": {
+      "depends_on": {
+        "both": {
+          "condition": "service_healthy",
+          "required": false
+        }
+      }
+    }
+  }
+}

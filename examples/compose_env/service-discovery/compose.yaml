@@ -1,0 +1,13 @@
+name: '${PROJECT:?supply a project}'
+services:
+  z.api:
+    env_file: local.env
+    environment:
+      VALUE: '${TOKEN:?supply a token}'
+  a-worker:
+    environment: [PASS]
+  missing:
+    env_file: absent.env
+  dynamic:
+    env_file: '${FILE:-unopened.env}'
+    environment: ['${KEY:?supply a key}=literal']

@@ -1,0 +1,17 @@
+name: ${PROJECT?synthetic project prompt}
+x-note: $META
+services:
+  api:
+    environment:
+      - APP=${SHARED:-synthetic fallback}
+      - APP=$SHARED $SHARED
+      - PASS
+  worker:
+    environment:
+      PASS: null
+  dynamic:
+    env_file: ${FILE:-unopened.env}
+    environment:
+      - ${KEY:?synthetic key prompt}=synthetic
+  excluded:
+    env_file: missing.env

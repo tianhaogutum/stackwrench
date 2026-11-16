@@ -1,0 +1,5 @@
+{
+  "baseline": {},
+  "explicit": {"shell_env": "explicit.json"},
+  "identical": {}
+}

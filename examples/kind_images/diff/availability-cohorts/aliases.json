@@ -1,0 +1,32 @@
+{
+  "images": [
+    {
+      "id": "synthetic-aliases",
+      "repoTags": [
+        "docker.io/library/demo:v1",
+        "demo:v1",
+        "demo:v1",
+        "docker.io/library/solo:v1",
+        "solo:v1"
+      ],
+      "repoDigests": [
+        "demo@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "solo@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ]
+    },
+    {
+      "id": "synthetic-aliases",
+      "repoTags": [
+        "docker.io/library/demo:v1",
+        "demo:v1",
+        "demo:v1",
+        "docker.io/library/solo:v1",
+        "solo:v1"
+      ],
+      "repoDigests": [
+        "demo@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "solo@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ]
+    }
+  ]
+}

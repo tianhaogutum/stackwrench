@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "cluster": "demo",
+  "nodes": {
+    "node-a": {
+      "schedulable": true,
+      "snapshot": "incomplete-images.json",
+      "source": "synthetic incomplete"
+    }
+  }
+}

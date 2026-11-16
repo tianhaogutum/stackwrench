@@ -1,0 +1,237 @@
+{
+  "differences": [
+    {
+      "decisiveOrder": {
+        "left": [
+          {
+            "file": "examples/compose_merge/resources-one.yaml",
+            "input": 0
+          },
+          {
+            "file": "examples/compose_merge/resources-two.yaml",
+            "input": 1
+          }
+        ],
+        "right": [
+          {
+            "file": "examples/compose_merge/resources-two.yaml",
+            "input": 0
+          },
+          {
+            "file": "examples/compose_merge/resources-one.yaml",
+            "input": 1
+          }
+        ]
+      },
+      "fieldPath": "/source",
+      "left": {
+        "operations": [
+          {
+            "action": "add",
+            "source": {
+              "column": 7,
+              "file": "examples/compose_merge/resources-one.yaml",
+              "input": 0,
+              "line": 4
+            }
+          },
+          {
+            "action": "replace",
+            "source": {
+              "column": 9,
+              "file": "examples/compose_merge/resources-two.yaml",
+              "input": 1,
+              "line": 5
+            }
+          }
+        ],
+        "path": "/services/web/volumes/0/source",
+        "present": true,
+        "value": "new",
+        "winningSources": [
+          {
+            "column": 9,
+            "file": "examples/compose_merge/resources-two.yaml",
+            "input": 1,
+            "line": 5
+          }
+        ]
+      },
+      "path": "/services/web/volumes",
+      "resourceKey": {
+        "target": "/cache"
+      },
+      "right": {
+        "operations": [
+          {
+            "action": "add",
+            "source": {
+              "column": 7,
+              "file": "examples/compose_merge/resources-two.yaml",
+              "input": 0,
+              "line": 4
+            }
+          },
+          {
+            "action": "replace",
+            "source": {
+              "column": 9,
+              "file": "examples/compose_merge/resources-one.yaml",
+              "input": 1,
+              "line": 4
+            }
+          }
+        ],
+        "path": "/services/web/volumes/1/source",
+        "present": true,
+        "value": "old",
+        "winningSources": [
+          {
+            "column": 9,
+            "file": "examples/compose_merge/resources-one.yaml",
+            "input": 1,
+            "line": 4
+          }
+        ]
+      }
+    }
+  ],
+  "equivalent": false,
+  "leftFiles": [
+    "examples/compose_merge/resources-one.yaml",
+    "examples/compose_merge/resources-two.yaml"
+  ],
+  "resourceOrderChanges": [
+    {
+      "decisiveOrder": {
+        "left": [
+          {
+            "file": "examples/compose_merge/resources-one.yaml",
+            "input": 0
+          },
+          {
+            "file": "examples/compose_merge/resources-two.yaml",
+            "input": 1
+          }
+        ],
+        "right": [
+          {
+            "file": "examples/compose_merge/resources-two.yaml",
+            "input": 0
+          },
+          {
+            "file": "examples/compose_merge/resources-one.yaml",
+            "input": 1
+          }
+        ]
+      },
+      "left": {
+        "identities": [
+          {
+            "target": "/cache"
+          },
+          {
+            "target": "/stable"
+          }
+        ],
+        "operations": [
+          {
+            "action": "add",
+            "source": {
+              "column": 7,
+              "file": "examples/compose_merge/resources-one.yaml",
+              "input": 0,
+              "line": 4
+            }
+          },
+          {
+            "action": "merge",
+            "source": {
+              "column": 7,
+              "file": "examples/compose_merge/resources-two.yaml",
+              "input": 1,
+              "line": 4
+            }
+          }
+        ],
+        "present": true,
+        "winningSources": [
+          {
+            "column": 7,
+            "file": "examples/compose_merge/resources-two.yaml",
+            "input": 1,
+            "line": 4
+          },
+          {
+            "column": 9,
+            "file": "examples/compose_merge/resources-two.yaml",
+            "input": 1,
+            "line": 4
+          },
+          {
+            "column": 9,
+            "file": "examples/compose_merge/resources-two.yaml",
+            "input": 1,
+            "line": 5
+          }
+        ]
+      },
+      "path": "/services/web/volumes",
+      "right": {
+        "identities": [
+          {
+            "target": "/stable"
+          },
+          {
+            "target": "/cache"
+          }
+        ],
+        "operations": [
+          {
+            "action": "add",
+            "source": {
+              "column": 7,
+              "file": "examples/compose_merge/resources-two.yaml",
+              "input": 0,
+              "line": 4
+            }
+          },
+          {
+            "action": "merge",
+            "source": {
+              "column": 7,
+              "file": "examples/compose_merge/resources-one.yaml",
+              "input": 1,
+              "line": 4
+            }
+          }
+        ],
+        "present": true,
+        "winningSources": [
+          {
+            "column": 7,
+            "file": "examples/compose_merge/resources-one.yaml",
+            "input": 1,
+            "line": 4
+          },
+          {
+            "column": 9,
+            "file": "examples/compose_merge/resources-one.yaml",
+            "input": 1,
+            "line": 4
+          },
+          {
+            "column": 9,
+            "file": "examples/compose_merge/resources-one.yaml",
+            "input": 1,
+            "line": 5
+          }
+        ]
+      }
+    }
+  ],
+  "rightFiles": [
+    "examples/compose_merge/resources-two.yaml",
+    "examples/compose_merge/resources-one.yaml"
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "report_type": "env-template-discovery",
+  "evaluation": "syntax-only",
+  "values_shown": false,
+  "host_environment": "not-read",
+  "implicit_dotenv": "not-read",
+  "complete": false,
+  "references": [
+    {
+      "phase": "compose",
+      "location": "revision-two.yaml:1:11",
+      "offset": 0,
+      "variable": "PROJECT",
+      "operator": "direct",
+      "field_path": [
+        "x-shared"
+      ]
+    },
+    {
+      "phase": "compose",
+      "location": "revision-two.yaml:4:15",
+      "offset": 0,
+      "variable": "FILE",
+      "operator": ":-",
+      "field_path": [
+        "services",
+        "worker",
+        "env_file"
+      ]
+    },
+    {
+      "phase": "compose",
+      "location": "revision-two.yaml:6:9",
+      "offset": 2,
+      "variable": "ADDED",
+      "operator": ":?",
+      "field_path": [
+        "services",
+        "worker",
+        "environment",
+        0
+      ]
+    },
+    {
+      "phase": "compose",
+      "location": "revision-two.yaml:7:9",
+      "offset": 2,
+      "variable": "TOKEN",
+      "operator": ":?",
+      "field_path": [
+        "services",
+        "worker",
+        "environment",
+        1
+      ]
+    },
+    {
+      "phase": "compose",
+      "location": "revision-two.yaml:9:9",
+      "offset": 0,
+      "variable": "KEY",
+      "operator": "direct",
+      "field_path": [
+        "services",
+        "worker",
+        "environment",
+        3
+      ]
+    },
+    {
+      "variable": "PASS",
+      "operator": "inherited-key-only",
+      "phase": "compose",
+      "location": "revision-two.yaml:8:9",
+      "field_path": [
+        "services",
+        "worker",
+        "environment",
+        2
+      ]
+    }
+  ],
+  "service_env_files": [
+    {
+      "service": "worker",
+      "location": "revision-two.yaml:4:15",
+      "field_path": [
+        "services",
+        "worker",
+        "env_file"
+      ],
+      "required": true,
+      "format": "compose",
+      "status": "unresolved-dynamic"
+    }
+  ],
+  "unresolved_environment": [
+    {
+      "service": "worker",
+      "location": "revision-two.yaml:9:9",
+      "field_path": [
+        "services",
+        "worker",
+        "environment",
+        3
+      ],
+      "status": "unresolved-dynamic"
+    }
+  ]
+}

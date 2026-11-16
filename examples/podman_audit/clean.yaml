@@ -1,0 +1,6 @@
+services:
+  db:
+    image: example.invalid/db:1
+  api:
+    image: example.invalid/api:1
+    depends_on: [db]

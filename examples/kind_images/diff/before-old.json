@@ -1,0 +1,13 @@
+{
+  "images": [
+    {
+      "id": "opaque-id",
+      "repoTags": [
+        "demo:v1"
+      ],
+      "repoDigests": [
+        "demo@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "images": [
+    {
+      "id": "partial",
+      "repoTags": [
+        "demo:v1"
+      ],
+      "repoDigests": [
+        "demo@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ]
+    },
+    {
+      "id": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "repoTags": [
+        "demo:v1"
+      ],
+      "repoDigests": [
+        "other@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ]
+    }
+  ]
+}

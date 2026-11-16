@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "cluster": "demo",
+  "nodes": {
+    "node-a": {
+      "schedulable": true,
+      "snapshot": "records-a.json",
+      "capturedAt": "2026-11-11T22:15:00.123456+01:00",
+      "source": "synthetic fixture / record disagreement"
+    },
+    "node-b": {
+      "schedulable": true,
+      "snapshot": "records-b.json"
+    },
+    "node-excluded": {
+      "schedulable": false,
+      "snapshot": "../snapshots/empty.json",
+      "capturedAt": "2026-11-11T21:00:00Z",
+      "source": "synthetic excluded capture"
+    },
+    "node-unknown": {
+      "schedulable": true
+    }
+  }
+}

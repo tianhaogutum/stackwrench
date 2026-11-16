@@ -1,0 +1,73 @@
+{
+  "catalogVersion": "2026-11-11.1",
+  "retrievedAt": "2026-11-11",
+  "provider": "podman-compose",
+  "rules": {
+    "PC1541": {
+      "kind": "provider-report",
+      "evidenceUrl": "https://github.com/containers/podman-compose/issues/1541",
+      "observedVersions": [
+        "1.6.0"
+      ],
+      "statusAtRetrieval": "open",
+      "observationContext": "Reporter: Podman 4.9.3, Ubuntu GitHub Actions; detached up.",
+      "reportedBehavior": "A service_healthy gate was reported to hang detached startup even after the dependency became healthy.",
+      "uncertainty": "User report, not reproduced here. Host and runtime matter; no affected version range or fix version is inferred.",
+      "suggestion": "Keep the readiness gate. Verify it on the exact provider/runtime pair in an isolated environment before migration."
+    },
+    "PC1500": {
+      "kind": "provider-report",
+      "evidenceUrl": "https://github.com/containers/podman-compose/issues/1500",
+      "observedVersions": [
+        "1.6.0"
+      ],
+      "statusAtRetrieval": "open",
+      "observationContext": "Reporter: Podman 4.9.3, WSL; start_interval during start_period. A proposed emulation is discussed; no release fix is established by this catalog.",
+      "reportedBehavior": "start_interval was reported mapped to Podman's separate startup-healthcheck interval, with different semantics and no expected regular-check cadence.",
+      "uncertainty": "User report, not reproduced here. A proposed change does not establish a released fix; no other version is classified as affected or safe.",
+      "suggestion": "Retain health checks and readiness gates. Verify startup-period cadence on the exact provider/runtime pair; plan explicitly for the normal interval if unavailable."
+    },
+    "DEP001": {
+      "kind": "structural",
+      "evidenceUrl": "https://github.com/compose-spec/compose-spec/blob/main/spec.md#depends_on",
+      "observedVersions": [],
+      "statusAtRetrieval": "specification-reference",
+      "observationContext": "Local single-document dependency graph; required:false is optional.",
+      "reportedBehavior": "The dependency target is absent from the supplied services map.",
+      "uncertainty": "Structural observation, independent of provider version. No include, profiles or additional files are resolved.",
+      "suggestion": "Check the dependency name and supply a complete supported model. Preserve intentional optional-dependency semantics."
+    },
+    "DEP002": {
+      "kind": "structural",
+      "evidenceUrl": "https://github.com/compose-spec/compose-spec/blob/main/spec.md#healthcheck",
+      "observedVersions": [],
+      "statusAtRetrieval": "specification-reference",
+      "observationContext": "Only explicit Compose healthcheck declarations are inspected; image metadata is unavailable.",
+      "reportedBehavior": "A healthy gate has a disabled or not explicitly declared healthcheck target.",
+      "uncertainty": "Missing test in Compose does not prove absence: an image may supply HEALTHCHECK. Explicit disable:true or test:[NONE] is locally observable.",
+      "suggestion": "Keep the readiness gate. Declare an appropriate healthcheck or separately verify the image's inherited check; review explicit disablement."
+    },
+    "DEP003": {
+      "kind": "structural",
+      "evidenceUrl": "https://github.com/compose-spec/compose-spec/blob/main/spec.md#depends_on",
+      "observedVersions": [],
+      "statusAtRetrieval": "specification-reference",
+      "observationContext": "Graph inference from dependency ordering, not a provider issue or runtime reproduction.",
+      "reportedBehavior": "This dependency edge belongs to a cycle, so the declared graph has no topological startup order.",
+      "uncertainty": "Describes declared dependency edges, including optional edges; no runtime behavior is asserted.",
+      "suggestion": "Review the cycle and redesign the dependency direction while preserving required readiness guarantees."
+    },
+    "CAT001": {
+      "kind": "version-coverage",
+      "evidenceUrl": "https://github.com/containers/podman-compose/issues/1541",
+      "observedVersions": [
+        "1.6.0"
+      ],
+      "statusAtRetrieval": "catalog-coverage-only",
+      "observationContext": "The bundled provider reports establish observations for exact version 1.6.0 only.",
+      "reportedBehavior": "The requested provider version is not observed in this catalog; compatibility remains unverified.",
+      "uncertainty": "No version range is inferred. A version outside the observations is neither proven affected nor proven safe.",
+      "suggestion": "Consult release-specific evidence and verify the exact provider/runtime pair separately before migration."
+    }
+  }
+}

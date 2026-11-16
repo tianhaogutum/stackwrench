@@ -1,0 +1,33 @@
+name: trace-demo
+services:
+  web:
+    image: example.invalid/web:1
+    command: [echo, old]
+    entrypoint: [/entry, old]
+    healthcheck:
+      test: [CMD, echo, old]
+      interval: 30s
+    environment:
+      KEEP: base
+      REPLACE: old
+      REMOVE: old
+    dns: [1.1.1.1]
+    ports:
+      - '8080:80'
+    volumes:
+      - cache:/cache:ro
+    secrets: [token]
+    configs: [settings]
+volumes:
+  cache: {}
+  fresh: {}
+secrets:
+  token:
+    external: true
+  newer:
+    external: true
+configs:
+  settings:
+    external: true
+  replacement:
+    external: true

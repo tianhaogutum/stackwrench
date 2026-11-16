@@ -1,0 +1,87 @@
+{
+  "configs": {
+    "replacement": {
+      "external": true
+    },
+    "settings": {
+      "external": true
+    }
+  },
+  "name": "trace-demo",
+  "secrets": {
+    "newer": {
+      "external": true
+    },
+    "token": {
+      "external": true
+    }
+  },
+  "services": {
+    "web": {
+      "command": [
+        "echo",
+        "new"
+      ],
+      "configs": [
+        {
+          "source": "replacement",
+          "target": "/settings"
+        }
+      ],
+      "dns": [
+        "1.1.1.1",
+        "8.8.8.8"
+      ],
+      "entrypoint": [
+        "/entry",
+        "new"
+      ],
+      "environment": {
+        "KEEP": "base",
+        "REPLACE": "new"
+      },
+      "healthcheck": {
+        "interval": "30s",
+        "test": [
+          "CMD",
+          "echo",
+          "new"
+        ]
+      },
+      "image": "example.invalid/web:1",
+      "ports": [
+        {
+          "mode": "ingress",
+          "name": "public",
+          "protocol": "tcp",
+          "published": "8080",
+          "target": 80
+        },
+        {
+          "mode": "ingress",
+          "protocol": "tcp",
+          "published": "8443",
+          "target": 443
+        }
+      ],
+      "secrets": [
+        {
+          "source": "newer",
+          "target": "/run/secrets/token"
+        }
+      ],
+      "volumes": [
+        {
+          "read_only": false,
+          "source": "fresh",
+          "target": "/cache",
+          "type": "volume"
+        }
+      ]
+    }
+  },
+  "volumes": {
+    "cache": {},
+    "fresh": {}
+  }
+}

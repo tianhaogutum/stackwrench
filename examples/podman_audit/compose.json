@@ -1,0 +1,16 @@
+{
+  "services": {
+    "db": {
+      "image": "example.invalid/database:1",
+      "healthcheck": {
+        "test": ["CMD", "synthetic-health-probe"],
+        "start_interval": "1s",
+        "start_period": "10s"
+      }
+    },
+    "api": {
+      "image": "example.invalid/api:1",
+      "depends_on": {"db": {"condition": "service_healthy"}}
+    }
+  }
+}

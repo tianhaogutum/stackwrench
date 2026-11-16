@@ -1,0 +1,61 @@
+services:
+  api.default:
+    depends_on:
+      disabled:
+        condition: service_healthy
+      empty:
+        condition: service_healthy
+      inherited:
+        condition: service_healthy
+      none:
+        condition: service_healthy
+  api.optional:
+    depends_on:
+      disabled:
+        required: false
+        condition: service_healthy
+      empty:
+        required: false
+        condition: service_healthy
+      inherited:
+        required: false
+        condition: service_healthy
+      none:
+        required: false
+        condition: service_healthy
+      active:
+        condition: service_healthy
+        required: false
+  api.required:
+    depends_on:
+      disabled:
+        condition: service_healthy
+        required: true
+      empty:
+        condition: service_healthy
+        required: true
+      inherited:
+        condition: service_healthy
+        required: true
+      none:
+        condition: service_healthy
+        required: true
+  started:
+    depends_on:
+      disabled:
+        condition: service_started
+        required: false
+  disabled:
+    healthcheck:
+      disable: true
+  empty:
+    healthcheck:
+      interval: 1s
+  inherited: {}
+  none:
+    healthcheck:
+      test: [NONE]
+  active:
+    healthcheck:
+      disable: false
+      test: [CMD, SECRET_DO_NOT_ECHO]

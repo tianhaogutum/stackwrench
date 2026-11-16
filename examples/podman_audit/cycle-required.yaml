@@ -1,0 +1,26 @@
+services:
+  a.b:
+    depends_on:
+      optional:
+        condition: service_started
+  optional:
+    depends_on:
+      required:
+        required: false
+        condition: service_started
+  required:
+    depends_on:
+      short:
+        condition: service_healthy
+        required: true
+  short:
+    healthcheck:
+      test: [CMD, SECRET_DO_NOT_ECHO]
+    depends_on:
+      - a.b
+  outside:
+    command: SECRET_DO_NOT_ECHO
+    depends_on:
+      a.b:
+        condition: service_started
+        required: false

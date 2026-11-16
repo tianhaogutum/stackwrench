@@ -1,0 +1,1 @@
+{"schemaVersion":1,"kind":"custom","provider":"podman-compose","version":"1.6.1","rules":{"PC1500":{"judgment":"supported","evidenceReferences":["https://example.invalid/observations/start-interval","local-run-17"],"observationNotes":"Synthetic example only; no runtime verification was performed."}}}

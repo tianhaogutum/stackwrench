@@ -1,0 +1,10 @@
+# Expected CLI exit 2, asserted by tests.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: invalid
+spec:
+  containers:
+    - name: app
+      image: demo:v1
+      imagePullPolicy: Sometimes

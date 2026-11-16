@@ -1,0 +1,2 @@
+# Candidate: omit the synthetic build output.
+build/**

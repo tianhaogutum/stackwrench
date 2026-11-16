@@ -1,0 +1,23 @@
+# Synthetic demo app stack for `stackwrench check`. Nothing here is started.
+services:
+  web:
+    build: .
+    image: "shop-web:${TAG:-dev}"
+    ports:
+      - "3000:3000"
+    env_file:
+      - web.env
+    environment:
+      NODE_ENV: development
+      API_URL: "${API_URL}"
+      LOG_LEVEL: ""
+      SENTRY_DSN:
+      DATABASE_URL: "postgres://app@db:5432/${DB_NAME}"
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: postgres:16.4
+    environment:
+      POSTGRES_DB: "${DB_NAME}"
+      POSTGRES_HOST_AUTH_METHOD: trust

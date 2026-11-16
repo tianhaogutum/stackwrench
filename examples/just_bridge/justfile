@@ -1,0 +1,20 @@
+project := 'demo'
+message := "building"
+dollar := '$HOME $(printf untouched)'
+
+# Build the synthetic demo after ordered setup
+build: clean check
+    printf '%s\n' '{{message}} {{project}}'
+    printf '%s\n' '{{dollar}}'
+
+# Clean the synthetic workspace
+clean: prepare
+    printf '%s\n' 'cleaning'
+
+# Check the synthetic workspace
+check: prepare
+    printf '%s\n' 'checking'
+
+# Shared prerequisite runs once
+prepare:
+    printf '%s\n' 'preparing'

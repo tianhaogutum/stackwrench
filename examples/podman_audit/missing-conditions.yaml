@@ -1,0 +1,30 @@
+services:
+  api-v1:
+    command: SECRET_DO_NOT_ECHO
+    depends_on:
+      optional_missing:
+        condition: service_healthy
+        required: false
+      required_missing:
+        required: true
+        condition: service_started
+      implicit_missing:
+        condition: service_completed_successfully
+      ready:
+        condition: service_healthy
+      solo:
+        condition: service_healthy
+        required: false
+  worker:
+    depends_on:
+      - short_missing
+  ready:
+    healthcheck:
+      test: [CMD, SECRET_DO_NOT_ECHO]
+      start_interval: 1s
+  solo:
+    depends_on:
+      - solo
+  outside:
+    depends_on:
+      - solo

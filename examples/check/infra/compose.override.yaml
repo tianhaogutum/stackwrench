@@ -1,0 +1,6 @@
+# Developer overrides, loaded automatically by `docker compose up`. Synthetic.
+services:
+  redis:
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "6380:6379"

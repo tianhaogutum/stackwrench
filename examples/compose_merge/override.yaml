@@ -1,0 +1,23 @@
+services:
+  web:
+    command: [echo, new]
+    entrypoint: [/entry, new]
+    healthcheck:
+      test: [CMD, echo, new]
+    environment:
+      REPLACE: new
+      REMOVE: !reset null
+    dns: [8.8.8.8]
+    ports:
+      - target: 80
+        published: '8080'
+        name: public
+      - '8443:443'
+    volumes:
+      - fresh:/cache:rw
+    secrets:
+      - source: newer
+        target: /run/secrets/token
+    configs:
+      - source: replacement
+        target: /settings

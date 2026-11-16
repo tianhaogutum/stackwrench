@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "cluster": "demo",
+  "nodes": {
+    "node-a": {
+      "schedulable": true,
+      "snapshot": "node-a.json"
+    },
+    "node-b": {
+      "schedulable": true,
+      "snapshot": "node-b.json"
+    }
+  }
+}

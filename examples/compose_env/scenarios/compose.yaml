@@ -1,0 +1,8 @@
+services:
+  demo:
+    image: synthetic:demo
+    environment:
+      OPTIONAL:
+      DEFAULTED: '${MODE:-synthetic-default}'
+      CHANGED: '${CHANGED}'
+      SAME:

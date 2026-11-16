@@ -1,0 +1,24 @@
+# Synthetic, safe to print. This tool never starts the image or command.
+services:
+  web:
+    image: "example.invalid/demo:${TAG:-demo}"
+    env_file:
+      - base.env
+      - override.env
+    environment:
+      APP_MODE: ""
+      PORT: "${PORT:-9090}"
+      INHERIT:
+      UNRESOLVED:
+      ESCAPED: "$$PORT"
+      DEFAULT_EMPTY: "${EMPTY-fallback}"
+      DEFAULT_UNSET: "${ABSENT:-fallback}"
+      OPTIONAL: "${EMPTY:+alternative}"
+      REQUIRED: "${PORT:?supply PORT}"
+    command: ["echo", "$$PORT"]
+  worker:
+    image: example.invalid/worker:demo
+    environment:
+      - INHERIT
+      - EXPLICIT_EMPTY=
+      - FROM_PORT=$PORT

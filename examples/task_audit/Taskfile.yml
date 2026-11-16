@@ -1,0 +1,20 @@
+# Synthetic version-only change scenario inspired by historical Task #548.
+version: '3'
+vars:
+  VERSION: '1'
+tasks:
+  build:
+    sources: [base.txt]
+    generates: [build.txt]
+    cmds:
+      - 'printf "%s\n" "{{.VERSION}}" > build.txt'
+  status-demo:
+    sources: [base.txt]
+    status:
+      - 'test -e build.txt'
+    cmds:
+      - 'cat base.txt > build.txt'
+  external:
+    sources: [base.txt]
+    cmds:
+      - 'printf "%s\n" "$BUILD_MODE"'

@@ -1,0 +1,12 @@
+{
+  "model": "static logical regular-file payload; not transfer, compression, image size or timing",
+  "baseline": {"bytes": 1020, "files": 2},
+  "candidate": {"bytes": 20, "files": 1},
+  "delta": {"bytes": -1000, "files": -1},
+  "excluded": {
+    "path": "build/b.bin",
+    "bytes": 1000,
+    "candidate_rule_line": 2,
+    "candidate_rule": "build/**"
+  }
+}

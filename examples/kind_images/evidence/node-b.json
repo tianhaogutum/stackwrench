@@ -1,0 +1,13 @@
+{
+  "images": [
+    {
+      "id": "shared-opaque-id",
+      "repoTags": [
+        "docker.io/library/demo:v1"
+      ],
+      "repoDigests": [
+        "demo@sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ]
+    }
+  ]
+}

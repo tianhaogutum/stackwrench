@@ -1,0 +1,11 @@
+services:
+  demo:
+    image: synthetic:demo
+    env_file:
+      - static.env
+      - '${FILE:-not-guessed.env}'
+    environment:
+      TOKEN_VALUE: '${TOKEN:?synthetic-private-message}'
+      EMPTY_VALUE: '${EMPTY?synthetic-private-message}'
+      PASS:
+      LITERAL: '$$IGNORED'

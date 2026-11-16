@@ -1,0 +1,5 @@
+services:
+  demo:
+    image: example.invalid/demo:demo
+    environment:
+      REQUIRED: "${MISSING:?synthetic message must stay redacted}"

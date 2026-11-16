@@ -1,0 +1,5 @@
+services:
+  demo:
+    env_file: ['${SHADOW:-shadow.env}', '${FILE:-selected.env}', stable.env]
+    environment:
+      OVERRIDDEN: synthetic-equal

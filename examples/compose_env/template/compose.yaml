@@ -1,0 +1,10 @@
+# Local synthetic fixture; the image is never pulled or started.
+services:
+  demo:
+    image: "example.invalid/demo:${TAG:-demo}"
+    environment:
+      TOKEN_VALUE: "${TOKEN:?provide token}"
+      MODE_VALUE: "${MODE:-development}"
+      EMPTY_VALUE: "${EMPTY?provide empty or nonempty}"
+      PASS:
+      LITERAL: "$$IGNORED"

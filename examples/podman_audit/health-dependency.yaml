@@ -1,0 +1,9 @@
+# Synthetic declaration only; never run by the auditor.
+services:
+  api:
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    healthcheck:
+      test: [CMD, synthetic-health-probe]

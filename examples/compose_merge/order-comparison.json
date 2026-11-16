@@ -1,0 +1,105 @@
+{
+  "differences": [
+    {
+      "decisiveOrder": {
+        "left": [
+          {
+            "file": "examples/compose_merge/order-one.yaml",
+            "input": 0
+          },
+          {
+            "file": "examples/compose_merge/order-two.yaml",
+            "input": 2
+          }
+        ],
+        "right": [
+          {
+            "file": "examples/compose_merge/order-two.yaml",
+            "input": 0
+          },
+          {
+            "file": "examples/compose_merge/order-one.yaml",
+            "input": 1
+          }
+        ]
+      },
+      "left": {
+        "operations": [
+          {
+            "action": "add",
+            "source": {
+              "column": 12,
+              "file": "examples/compose_merge/order-one.yaml",
+              "input": 0,
+              "line": 3
+            }
+          },
+          {
+            "action": "replace",
+            "source": {
+              "column": 12,
+              "file": "examples/compose_merge/order-two.yaml",
+              "input": 2,
+              "line": 3
+            }
+          }
+        ],
+        "present": true,
+        "value": "example.invalid/app:two",
+        "winningSources": [
+          {
+            "column": 12,
+            "file": "examples/compose_merge/order-two.yaml",
+            "input": 2,
+            "line": 3
+          }
+        ]
+      },
+      "path": "/services/web/image",
+      "right": {
+        "operations": [
+          {
+            "action": "add",
+            "source": {
+              "column": 12,
+              "file": "examples/compose_merge/order-two.yaml",
+              "input": 0,
+              "line": 3
+            }
+          },
+          {
+            "action": "replace",
+            "source": {
+              "column": 12,
+              "file": "examples/compose_merge/order-one.yaml",
+              "input": 1,
+              "line": 3
+            }
+          }
+        ],
+        "present": true,
+        "value": "example.invalid/app:one",
+        "winningSources": [
+          {
+            "column": 12,
+            "file": "examples/compose_merge/order-one.yaml",
+            "input": 1,
+            "line": 3
+          }
+        ]
+      }
+    }
+  ],
+  "equivalent": false,
+  "leftFiles": [
+    "examples/compose_merge/order-one.yaml",
+    "examples/compose_merge/order-labels.yaml",
+    "examples/compose_merge/order-two.yaml"
+  ],
+  "resourceOrderChanges": [],
+  "rightFiles": [
+    "examples/compose_merge/order-two.yaml",
+    "examples/compose_merge/order-one.yaml",
+    "examples/compose_merge/order-labels.yaml"
+  ]
+}

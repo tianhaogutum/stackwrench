@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "cluster": "demo",
+  "nodes": {
+    "demo-worker-a": {
+      "schedulable": true,
+      "snapshot": "snapshots/worker-a.json"
+    },
+    "demo-worker-b": {
+      "schedulable": true,
+      "snapshot": "snapshots/worker-b.json"
+    },
+    "demo-control-plane": {
+      "schedulable": false
+    }
+  }
+}

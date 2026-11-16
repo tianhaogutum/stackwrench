@@ -1,0 +1,4 @@
+include: ./not-read.yaml
+services:
+  api:
+    image: example.invalid/api:1

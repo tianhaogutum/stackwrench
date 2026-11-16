@@ -1,0 +1,15 @@
+digraph recipes {
+  "release";
+  "build";
+  "independent";
+  "test";
+  "common";
+  "shared";
+  "build" -> "release";
+  "test" -> "release";
+  "shared" -> "build";
+  "common" -> "build";
+  "common" -> "test";
+  "shared" -> "test";
+  "shared" -> "common";
+}

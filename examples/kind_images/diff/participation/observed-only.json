@@ -1,0 +1,12 @@
+{
+  "images": [
+    {
+      "id": "synthetic-opaque",
+      "repoTags": [
+        "solo:v1",
+        "docker.io/library/solo:v1"
+      ],
+      "repoDigests": []
+    }
+  ]
+}

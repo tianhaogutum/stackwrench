@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "cluster": "demo",
+  "nodes": {
+    "node-a": {
+      "schedulable": true,
+      "snapshot": "after-a.json",
+      "capturedAt": "2026-11-11T11:00:00+00:00",
+      "source": "synthetic fixture after/a"
+    },
+    "node-new": {
+      "schedulable": true,
+      "snapshot": "empty.json"
+    },
+    "node-unknown": {
+      "schedulable": true
+    },
+    "node-excluded": {
+      "schedulable": false
+    }
+  }
+}

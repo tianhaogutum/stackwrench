@@ -1,0 +1,13 @@
+# Synthetic justfile for the demo app; nothing here is run.
+
+# Start the local stack
+up:
+    docker compose up -d
+
+# Run the test suite
+test:
+    npm test
+
+# Ship it
+deploy: biuld test
+    ./scripts/deploy.sh

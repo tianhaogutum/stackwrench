@@ -1,0 +1,12 @@
+{
+  "volumes": {
+    "cache": {
+      "labels": {
+        "KEEP": "yes"
+      }
+    }
+  },
+  "x-data": {
+    "keep": "live"
+  }
+}

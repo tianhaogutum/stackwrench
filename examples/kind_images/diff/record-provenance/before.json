@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "cluster": "evidence-demo",
+  "nodes": {
+    "node-a": {
+      "schedulable": true,
+      "snapshot": "before-images.json",
+      "source": "synthetic before"
+    }
+  }
+}

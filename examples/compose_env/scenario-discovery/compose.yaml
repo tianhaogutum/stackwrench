@@ -1,0 +1,10 @@
+# Synthetic inputs only; discovery never evaluates either required check.
+services:
+  demo:
+    image: synthetic:demo
+    env_file: '${TOKEN:-unopened.env}'
+    environment:
+      - '${KEY:?private-message}=synthetic-literal'
+      - '${WHOLE}'
+      - PASS
+      - 'VALUE=${TOKEN:?private-message}'

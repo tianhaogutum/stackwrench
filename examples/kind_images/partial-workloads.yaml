@@ -1,0 +1,23 @@
+# Synthetic partial-inventory example; no operations are executed.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mixed-policies
+spec:
+  containers:
+    - name: always
+      image: demo:latest
+      imagePullPolicy: Always
+    - name: conditional
+      image: docker.io/library/demo:latest
+      imagePullPolicy: IfNotPresent
+    - name: local-only
+      image: index.docker.io/demo:latest
+      imagePullPolicy: Never
+---
+apiVersion: example.invalid/v1
+kind: DemoRollout
+metadata:
+  name: custom
+spec:
+  image: not-evaluated:v1

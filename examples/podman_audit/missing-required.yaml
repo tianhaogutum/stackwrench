@@ -1,0 +1,15 @@
+services:
+  api-v1:
+    command: SECRET_DO_NOT_ECHO
+    depends_on:
+      optional_missing:
+        condition: service_healthy
+        required: false
+      required_missing:
+        condition: service_started
+        required: true
+      implicit_missing:
+        condition: service_started
+  worker:
+    depends_on:
+      - short_missing

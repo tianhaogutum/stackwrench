@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "scenarios": [
+    {"id": "source-edit", "changes": [{"path": "src/app.js", "kind": "content"}]},
+    {"id": "manifest-edit", "changes": [{"path": "package.json", "kind": "content"}]},
+    {"id": "add-source", "changes": [{"path": "src/new.js", "kind": "add"}]},
+    {"id": "remove-added-source", "changes": [{"path": "src/new.js", "kind": "delete"}]},
+    {"id": "no-change", "changes": []}
+  ]
+}

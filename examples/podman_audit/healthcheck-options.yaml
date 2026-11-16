@@ -1,0 +1,8 @@
+# Synthetic declaration only; never run by the auditor.
+services:
+  db:
+    healthcheck:
+      test: [CMD, synthetic-health-probe]
+      interval: 30s
+      start_period: 10s
+      start_interval: 1s

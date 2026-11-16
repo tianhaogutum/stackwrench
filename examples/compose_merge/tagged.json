@@ -1,0 +1,75 @@
+{
+  "configs": {
+    "replacement": {
+      "external": true
+    },
+    "settings": {
+      "external": true
+    }
+  },
+  "name": "trace-demo",
+  "secrets": {
+    "newer": {
+      "external": true
+    },
+    "token": {
+      "external": true
+    }
+  },
+  "services": {
+    "web": {
+      "command": [
+        "echo",
+        "new"
+      ],
+      "configs": [
+        {
+          "source": "replacement",
+          "target": "/settings"
+        }
+      ],
+      "entrypoint": [
+        "/entry",
+        "new"
+      ],
+      "environment": {
+        "ONLY": "explicit"
+      },
+      "healthcheck": {
+        "interval": "30s",
+        "test": [
+          "CMD",
+          "echo",
+          "new"
+        ]
+      },
+      "image": "example.invalid/web:1",
+      "ports": [
+        {
+          "mode": "ingress",
+          "protocol": "tcp",
+          "published": "9443",
+          "target": 443
+        }
+      ],
+      "secrets": [
+        {
+          "source": "newer",
+          "target": "/run/secrets/token"
+        }
+      ],
+      "volumes": [
+        {
+          "read_only": false,
+          "source": "fresh",
+          "target": "/cache",
+          "type": "volume"
+        }
+      ]
+    }
+  },
+  "volumes": {
+    "cache": {},
+    "fresh": {}
+  }
+}

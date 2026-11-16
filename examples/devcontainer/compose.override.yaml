@@ -1,0 +1,7 @@
+# Synthetic override: replace the /work mount by target, retain /deps.
+services:
+  web:
+    volumes:
+      - type: bind
+        source: ./src
+        target: /work

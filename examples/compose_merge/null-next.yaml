@@ -1,0 +1,8 @@
+volumes:
+  cache:
+    labels:
+      DROP: !reset null
+      KEEP: "yes"
+x-data:
+  gone: !reset null
+  keep: live

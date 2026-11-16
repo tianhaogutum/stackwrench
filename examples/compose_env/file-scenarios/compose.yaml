@@ -1,0 +1,7 @@
+services:
+  demo:
+    env_file:
+      - 'selected-${FLAVOR}.env'
+      - stable.env
+    environment:
+      OVERRIDDEN: synthetic-equal

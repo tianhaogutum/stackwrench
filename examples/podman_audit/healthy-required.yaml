@@ -1,0 +1,26 @@
+services:
+  api-v1:
+    depends_on:
+      db.optional:
+        required: false
+        condition: service_healthy
+      db.required:
+        condition: service_healthy
+        required: true
+      db.default:
+        condition: service_healthy
+      db.started:
+        required: false
+        condition: service_started
+  db.optional:
+    healthcheck:
+      test: ["CMD-SHELL", "SECRET_DO_NOT_ECHO"]
+  db.required:
+    healthcheck:
+      test: ["CMD", "SECRET_DO_NOT_ECHO"]
+  db.default:
+    healthcheck:
+      test: "SECRET_DO_NOT_ECHO"
+  db.started:
+    healthcheck:
+      test: ["CMD", "SECRET_DO_NOT_ECHO"]

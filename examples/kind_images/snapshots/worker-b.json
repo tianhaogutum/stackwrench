@@ -1,0 +1,40 @@
+{
+  "images": [
+    {
+      "id": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "repoTags": [
+        "docker.io/library/unrelated:v1"
+      ],
+      "repoDigests": null,
+      "size": "123456",
+      "uid": null,
+      "username": "",
+      "spec": null,
+      "pinned": false
+    },
+    {
+      "id": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "repoTags": [
+        "registry.local:5000/team/agent:v3"
+      ],
+      "repoDigests": [],
+      "size": "123456",
+      "uid": null,
+      "username": "",
+      "spec": null,
+      "pinned": false
+    },
+    {
+      "id": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+      "repoTags": [
+        "docker.io/library/busybox:latest"
+      ],
+      "repoDigests": [],
+      "size": "123456",
+      "uid": null,
+      "username": "",
+      "spec": null,
+      "pinned": false
+    }
+  ]
+}

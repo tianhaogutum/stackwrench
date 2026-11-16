@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "cluster": "evidence-demo",
+  "nodes": {
+    "a": {
+      "schedulable": true,
+      "snapshot": "../../evidence/records-a.json"
+    },
+    "b": {
+      "schedulable": true,
+      "snapshot": "../../evidence/records-b.json"
+    },
+    "c": {
+      "schedulable": true,
+      "snapshot": "../../evidence/cohort-c.json"
+    },
+    "d": {
+      "schedulable": true,
+      "snapshot": "../../evidence/cohort-d.json"
+    },
+    "excluded": {
+      "schedulable": false,
+      "snapshot": "../../evidence/records-a.json",
+      "capturedAt": "2026-11-11T12:00:00Z",
+      "source": "synthetic excluded before"
+    },
+    "entering": {
+      "schedulable": false,
+      "snapshot": "../../evidence/records-a.json"
+    },
+    "leaving": {
+      "schedulable": true,
+      "snapshot": "../../evidence/records-b.json"
+    },
+    "partial-before": {
+      "schedulable": true,
+      "snapshot": "../record-sets/incomplete-images.json"
+    },
+    "partial-after": {
+      "schedulable": true,
+      "snapshot": "../../evidence/records-a.json"
+    },
+    "missing-before": {
+      "schedulable": true
+    },
+    "missing-after": {
+      "schedulable": true,
+      "snapshot": "../../evidence/records-a.json"
+    },
+    "missing-both": {
+      "schedulable": true
+    },
+    "tag-added": {
+      "schedulable": true,
+      "snapshot": "../empty.json"
+    },
+    "tag-removed": {
+      "schedulable": true,
+      "snapshot": "../../evidence/records-a.json"
+    },
+    "removed": {
+      "schedulable": true,
+      "snapshot": "../../evidence/records-a.json"
+    },
+    "absent-both": {
+      "schedulable": true,
+      "snapshot": "../empty.json"
+    },
+    "unknown-absent-before": {
+      "schedulable": true
+    },
+    "unknown-absent-after": {
+      "schedulable": true,
+      "snapshot": "../empty.json"
+    },
+    "removed-missing": {
+      "schedulable": false
+    }
+  }
+}

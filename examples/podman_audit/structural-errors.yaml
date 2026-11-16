@@ -1,0 +1,13 @@
+services:
+  api:
+    image: example.invalid/api:1
+    depends_on:
+      db:
+        condition: service_healthy
+      missing:
+        condition: service_started
+  db:
+    image: example.invalid/db:1
+    healthcheck:
+      disable: true
+    depends_on: [api]

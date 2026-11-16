@@ -1,0 +1,5 @@
+services:
+  web:
+    volumes:
+      - stable:/stable
+      - new:/cache

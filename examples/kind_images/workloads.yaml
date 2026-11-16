@@ -1,0 +1,100 @@
+# Synthetic intent, never submitted to a cluster.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  namespace: demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels: {app: web}
+  template:
+    metadata:
+      labels: {app: web}
+    spec:
+      initContainers:
+        - name: prepare
+          image: registry.local:5000/team/init:v2
+          imagePullPolicy: Never
+      containers:
+        - name: app
+          image: demo:latest
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: database
+spec:
+  serviceName: database
+  selector:
+    matchLabels: {app: database}
+  template:
+    metadata:
+      labels: {app: database}
+    spec:
+      containers:
+        - name: db
+          image: db:1
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: agent
+spec:
+  selector:
+    matchLabels: {app: agent}
+  template:
+    metadata:
+      labels: {app: agent}
+    spec:
+      containers:
+        - name: agent
+          image: registry.local:5000/team/agent:v3
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pinned
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: pinned
+          image: demo@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: maintenance
+spec:
+  schedule: '0 2 * * *'
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          initContainers:
+            - name: prepare
+              image: docker.io/library/db:1
+          containers:
+            - name: backup
+              image: busybox
+              imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: required-local
+spec:
+  containers:
+    - name: app
+      image: index.docker.io/library/demo:latest
+      imagePullPolicy: Never
+---
+apiVersion: example.invalid/v1
+kind: DemoRollout
+metadata:
+  name: custom
+spec:
+  image: not-evaluated:v1

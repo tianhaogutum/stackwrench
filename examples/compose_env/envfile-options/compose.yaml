@@ -1,0 +1,10 @@
+services:
+  app:
+    env_file:
+      - base.env
+      - path: optional.env
+        required: false
+      - path: raw.env
+        format: raw
+    environment:
+      OVERRIDE: ''

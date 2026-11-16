@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "cluster": "demo",
+  "nodes": {
+    "node-d": {
+      "schedulable": true,
+      "snapshot": "cohort-d.json"
+    },
+    "node-b": {
+      "schedulable": true,
+      "snapshot": "records-b.json"
+    },
+    "node-c": {
+      "schedulable": true,
+      "snapshot": "cohort-c.json"
+    },
+    "node-a": {
+      "schedulable": true,
+      "snapshot": "records-a.json"
+    },
+    "node-incomplete": {
+      "schedulable": true,
+      "snapshot": "node-c.json"
+    },
+    "node-missing": {
+      "schedulable": true,
+      "snapshot": "../snapshots/empty.json"
+    },
+    "node-unknown": {
+      "schedulable": true
+    },
+    "node-excluded": {
+      "schedulable": false,
+      "snapshot": "records-a.json"
+    }
+  }
+}

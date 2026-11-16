@@ -1,0 +1,5 @@
+{
+  "z_baseline": {},
+  "a_supplied": {"env_files": ["explicit.env"]},
+  "broken": {"env_files": ["absent-explicit.env"]}
+}

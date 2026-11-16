@@ -1,0 +1,10 @@
+# Both supplied schedulable nodes have this exact tag. No registry request.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ready
+spec:
+  containers:
+    - name: busybox
+      image: busybox
+      imagePullPolicy: Never

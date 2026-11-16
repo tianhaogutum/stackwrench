@@ -1,0 +1,4 @@
+{
+  "left": {"shell_env": "left.json"},
+  "right": {"shell_env": "right.json"}
+}

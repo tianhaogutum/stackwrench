@@ -1,0 +1,5 @@
+{
+  "baseline": {},
+  "supplied": {"env_files": ["explicit.env"]},
+  "broken": {"env_files": ["missing.env"]}
+}

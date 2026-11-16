@@ -1,0 +1,1 @@
+Synthetic documentation, deliberately inside broad COPY.

@@ -1,0 +1,25 @@
+{
+  "services": {
+    "api": {
+      "depends_on": [
+        "missing"
+      ]
+    },
+    "worker": {
+      "depends_on": {
+        "cache": {
+          "condition": "service_healthy"
+        },
+        "db": {
+          "condition": "service_healthy"
+        }
+      }
+    },
+    "cache": {},
+    "db": {
+      "healthcheck": {
+        "interval": "1s"
+      }
+    }
+  }
+}

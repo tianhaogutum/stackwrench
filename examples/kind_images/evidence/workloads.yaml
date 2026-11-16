@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: evidence-review
+spec:
+  containers:
+    - name: app
+      image: demo:v1
+      imagePullPolicy: IfNotPresent
+    - name: helper
+      image: index.docker.io/library/demo:v1
+      imagePullPolicy: Never

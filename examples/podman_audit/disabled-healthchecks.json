@@ -1,0 +1,30 @@
+{
+  "services": {
+    "api": {
+      "depends_on": {
+        "cache": {
+          "condition": "service_healthy"
+        },
+        "db.primary": {
+          "condition": "service_healthy"
+        }
+      }
+    },
+    "cache": {
+      "healthcheck": {
+        "test": [
+          "NONE"
+        ]
+      }
+    },
+    "db.primary": {
+      "healthcheck": {
+        "disable": true,
+        "test": [
+          "CMD",
+          "SECRET_DO_NOT_ECHO"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+x-data: !override
+  nested: !override
+    gone: !reset null
+    keep: live

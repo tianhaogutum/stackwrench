@@ -1,0 +1,9 @@
+{
+  // Paths are relative to this config, not the invoking shell.
+  "name": "Synthetic local wiring example",
+  "dockerComposeFile": "../compose.yaml",
+  "service": "web",
+  "runServices": ["web", "db"],
+  "workspaceFolder": "/work/src",
+  "mounts": ["type=volume,source=editor-cache,target=/cache"],
+}

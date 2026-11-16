@@ -1,0 +1,14 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: build/Dockerfile
+    volumes:
+      - type: bind
+        source: .
+        target: /work
+      - cache:/deps
+  db:
+    image: synthetic-db:example
+volumes:
+  cache: {}

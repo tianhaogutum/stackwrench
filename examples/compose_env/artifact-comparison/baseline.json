@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "report_type": "env-template-discovery",
+  "evaluation": "syntax-only",
+  "values_shown": false,
+  "host_environment": "not-read",
+  "implicit_dotenv": "not-read",
+  "complete": true,
+  "scope": {
+    "services": [
+      "api"
+    ],
+    "shared": [
+      "explicit-dotenv-inputs",
+      "top-level-compose-values"
+    ]
+  },
+  "references": [
+    {
+      "phase": "interpolation-input",
+      "location": "explicit.env:1",
+      "offset": 0,
+      "variable": "SHARED",
+      "operator": "direct",
+      "field_path": [
+        "OUT"
+      ]
+    },
+    {
+      "phase": "interpolation-input",
+      "location": "explicit.env:1",
+      "offset": 8,
+      "variable": "SHARED",
+      "operator": "direct",
+      "field_path": [
+        "OUT"
+      ]
+    },
+    {
+      "phase": "compose",
+      "location": "revision-one.yaml:1:11",
+      "offset": 0,
+      "variable": "PROJECT",
+      "operator": "direct",
+      "field_path": [
+        "x-shared"
+      ]
+    },
+    {
+      "phase": "compose",
+      "location": "revision-one.yaml:9:9",
+      "offset": 2,
+      "variable": "REMOVED",
+      "operator": "direct",
+      "field_path": [
+        "services",
+        "api",
+        "environment",
+        0
+      ]
+    },
+    {
+      "phase": "compose",
+      "location": "revision-one.yaml:10:9",
+      "offset": 2,
+      "variable": "TOKEN",
+      "operator": "?",
+      "field_path": [
+        "services",
+        "api",
+        "environment",
+        1
+      ]
+    },
+    {
+      "phase": "service-env-file",
+      "location": "revision-one.yaml:5:9->env_file[0]:1",
+      "offset": 0,
+      "variable": "LOCAL",
+      "operator": ":?",
+      "field_path": [
+        "OUT"
+      ]
+    },
+    {
+      "variable": "PASS",
+      "operator": "inherited-key-only",
+      "phase": "compose",
+      "location": "revision-one.yaml:11:9",
+      "field_path": [
+        "services",
+        "api",
+        "environment",
+        2
+      ]
+    }
+  ],
+  "service_env_files": [
+    {
+      "service": "api",
+      "location": "revision-one.yaml:5:9",
+      "field_path": [
+        "services",
+        "api",
+        "env_file",
+        0
+      ],
+      "required": true,
+      "format": "compose",
+      "status": "scanned"
+    },
+    {
+      "service": "api",
+      "location": "revision-one.yaml:6:16",
+      "field_path": [
+        "services",
+        "api",
+        "env_file",
+        1,
+        "path"
+      ],
+      "required": false,
+      "format": "compose",
+      "status": "skipped-optional-missing",
+      "reason": "missing"
+    },
+    {
+      "service": "api",
+      "location": "revision-one.yaml:7:16",
+      "field_path": [
+        "services",
+        "api",
+        "env_file",
+        2,
+        "path"
+      ],
+      "required": true,
+      "format": "raw",
+      "status": "scanned"
+    }
+  ],
+  "unresolved_environment": []
+}

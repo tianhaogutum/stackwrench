@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="64" viewBox="0 0 340 64" role="img" aria-label="stackwrench">
+<title>stackwrench</title>
+<rect width="64" height="64" rx="15" fill="#15803d"/>
+<g fill="#ffffff" opacity="0.55">
+<rect x="38" y="36" width="18" height="4.5" rx="2.25"/>
+<rect x="38" y="43.5" width="18" height="4.5" rx="2.25"/>
+<rect x="38" y="51" width="18" height="4.5" rx="2.25"/>
+</g>
+<g transform="rotate(45 32 32)" fill="#ffffff">
+<mask id="m"><rect x="-20" y="-20" width="104" height="104" fill="#fff"/><rect x="27.5" y="2" width="9" height="15" rx="1" fill="#000"/><circle cx="32" cy="50" r="2.6" fill="#000"/></mask>
+<g mask="url(#m)"><circle cx="32" cy="17" r="11.5"/><rect x="27.5" y="20" width="9" height="36" rx="4.5"/></g>
+</g>
+<text x="80" y="45" fill="#1f2328" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="38" font-weight="700" letter-spacing="-0.5">stackwrench</text>
+</svg>
